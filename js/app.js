@@ -31,6 +31,7 @@ const displayContent = (text) => {
 };
 
 const switchTab = (id) => {
+  console.log(id)
   if (id === "posts") {
     document.getElementById("posts").style.display = "grid";
     document.getElementById("liked").style.display = "none";
@@ -51,7 +52,6 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  console.log(post)
   const image = post.image;
   const div = document.createElement("article");
   div.classList.add("post");
@@ -122,7 +122,7 @@ const createPost = (post) => {
                       <a class="post__name--underline" href="#">
                           ${post.comments[0].user}
                       </a>
-                      ${post.comments[0].text.length > 30 ? post.comments[0].text + ' <a style="color: red;" href="">Read more</a> ' : post.comments[0].text}
+                      ${post.comments[0].text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>
@@ -143,6 +143,7 @@ const showPosts = (posts) => {
 };
 
 const displayLikedPosts = () => {
+  document.getElementById("liked").innerHTML = ''
   const likedPosts = getLikedPosts();
   likedPosts.forEach((post) => {
     const div = createPost(post);
@@ -151,8 +152,9 @@ const displayLikedPosts = () => {
 };
 
 const displayReportedPosts = () => {
+  document.getElementById("reported").innerHTML = ''
   const reportedPosts = getReportedPosts();
-  posts.forEach((post) => {
+  reportedPosts.forEach((post) => {
     const div = createPost(post);
     document.getElementById("reported").appendChild(div);
   });
@@ -161,7 +163,6 @@ const displayReportedPosts = () => {
 const loadPosts = async () => {
   let data = await fetch('../data/posts.json');
   posts = await data.json();
-  console.log(posts)
   showPosts(posts);
 }
 

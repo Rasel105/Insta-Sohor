@@ -122,7 +122,7 @@ const createPost = (post) => {
                       <a class="post__name--underline" href="#">
                           ${post.comments[0].user}
                       </a>
-                      ${post.comments[0].text}
+                      ${post.comments[0].text.length > 30 ? post.comments[0].text + ' <a style="color: red;" href="">Read more</a> ' : post.comments[0].text}
                     </small>
                   </div>
                   <span class="post__date-time">30 minutes ago</span>

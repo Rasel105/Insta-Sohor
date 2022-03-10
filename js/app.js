@@ -52,11 +52,10 @@ const switchTab = (id) => {
 };
 
 const createPost = (post) => {
-  console.log(post)
   const image = post.image;
   const div = document.createElement("article");
   div.classList.add("post");
-  div.innerHTML = `
+  div.innerHTML = ` 
               <div class="post__header">
                 <div class="post__profile">
                   <a
